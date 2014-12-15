@@ -9,7 +9,7 @@ body{
 	padding:0;
 }
 #base{
-	background :url(ui/wallpaper/4.jpg) top center no-repeat fixed;
+	background :transparent;
     background-size: cover;
 	width:100%;
 	height:100%;
@@ -31,6 +31,7 @@ body{
 	position:fixed;
 }
 .notif{
+	font-size:1em;
 	float:left;
 	left:0;
 	height:25px;
@@ -45,10 +46,11 @@ body{
 	margin-right: 10px;
 	float:left;
 }
-.notif div{
-	float:left;
+.notif span{
+	float:none;
 	margin-top:3px;
 	position:inherit;
+	font-size:0.9em;
 }
 .tray{
 	position:absolute;
@@ -58,7 +60,7 @@ body{
 	top:0;
 	height:100%;
 	width:auto;
-	max-width:30%;
+	max-width:50%;
 }
 .tray img{
 	height:16px;
@@ -90,7 +92,7 @@ body{
 .kiri{
 	width:auto;
 	height:100%;
-	margin:35px 0;
+	margin:30px 0;
 	text-align:center;
 	z-index:10;
 	overflow-y: auto;
@@ -104,12 +106,13 @@ body{
 }
 
 .kiri1{
-	width:60px;
+	width:48px;
 	text-align:center;
+	margin:0 5px 0 5px;
 }
 .kiri1 .item{
 	margin:0 auto 0 auto;
-	width:60px;
+	width:48px;
 }
 .kiri1,.kiri2{
 	float:left;
@@ -117,6 +120,7 @@ body{
 	height:100%;
 	overflow-y: auto;
 	text-align:center;
+	font-size:0.8em;
 }
 .kiri2{
 	display:none;
@@ -126,7 +130,7 @@ body{
 	padding:0 5px 100px 5px;
 }
 .kiri2 .item{
-	width:70px;
+	width:60px;
 	margin:auto;
 }
 .ikon:hover{
@@ -141,7 +145,7 @@ body{
 	position:absolute;
 }
 #kanan{
-	opacity:0.2;
+	opacity:1;
 	width:60px;
 	height:100%;
 	right:0;
@@ -149,12 +153,10 @@ body{
 	position:absolute;
 	background:rgba(0,0,0,0.5);
 	z-index:102;
-	margin-right:-59px;
+	margin-right:0;
+	display:none;
 }
-#kanan:hover{
-	margin:0;
-	opacity:1;
-}
+
 .kanan{
 	width:100%;
 	height:auto;
@@ -232,7 +234,7 @@ body{
 
 /*------------------------------------------------ */
 #bawah{
-	opacity:0.2;
+	opacity:1;
 	width:100%;
 	height:60px;
 	right:0;
@@ -240,7 +242,8 @@ body{
 	position:absolute;
 	background:rgba(0,0,0,0.5);
 	z-index:100;
-	margin-bottom:-59px;
+	margin-bottom:0px;
+	display:none;
 }
 #bawah:hover{
 	opacity:1;
@@ -284,11 +287,21 @@ body{
 
 #desktop{
 	width:100%;
-	left:70px;
-	top:40px;
+	left:0;
+	top:0;
 	position:absolute;
 	float:left;
 	height:100%;
+	margin:0;
+	background:url(ui/wallpaper/4.jpg) top center no-repeat fixed;
+}
+.desktop-item{
+	position:absolute;
+	margin:40px 30px 0 60px;
+	width:auto;
+	max-height:90%;
+	height:auto;
+	overflow-y:auto;
 }
 .item-desktop{
 	height:80px;

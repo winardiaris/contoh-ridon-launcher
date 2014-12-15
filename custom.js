@@ -10,7 +10,7 @@ $(document).ready(function() {
 			"background":"-webkit-linear-gradient(left, rgba(0,0,0,0.9),rgba(0,0,0,0))",
 			"z-index":99
 			});
-		$('.kiri1').css("margin-left","0");
+		$('.kiri1').css("margin","0 5px 0 5px");
 		$label.css("display","none");
 		$('.item').css("margin-bottom","0");
 		
@@ -29,10 +29,39 @@ $(document).ready(function() {
 	}
 	});
 
-	$('#bawah').blur(function() {
-		$(this).css({"margin-bottom":"-59px"});
+	var kiri = $('#kiri');
+	var kanan = $('#kanan');
+	var bawah = $('#bawah');
+	var desktop = $('#desktop');
+	 
+    $(desktop)
+    .mousedown(function(firstlocation) {
+        $(window).mousemove(function(event) {
+            isDragging = true;
+			if((event.pageY + 50) < firstlocation.pageY){
+				bawah.fadeIn();
+			}
+			else if((event.pageX + 50) < firstlocation.pageX){
+				kanan.fadeIn();
+			}
+			
+        });
+    })
+    .mouseup(function() {
+        isDragging = false;
+        $(window).unbind("mousemove");
+    });
+	
+	
+	$(bawah).mouseleave(function() {
+		bawah.fadeOut().hide();
 		$('#wallpaper').fadeOut().hide();
 	});
+	$(kanan).mouseleave(function() {
+		kanan.fadeOut().hide();
+	});
+	
+	
 	$('#thumb-wallpaper').click(function() {
 		var $wall = $('#wallpaper');
 		if ($wall.is(':visible')) {$wall.fadeOut();$wall.hide();}
@@ -40,7 +69,7 @@ $(document).ready(function() {
 	});
 	$('.item-wallpaper').click(function() {
 		var $val = $(this).attr('src');
-		$('#base').css({"background":"url("+$val+") top center no-repeat fixed","background-size":"cover"});
+		$('#desktop').css({"background":"url("+$val+") top center no-repeat fixed","background-size":"cover"});
 		//alert($val);
 		
 	});
@@ -51,10 +80,10 @@ $(document).ready(function() {
 	});
 	$('.item-widget').click(function() {
 		var $val = $(this).attr('src');
-		var $desk = $('#desktop').html();
-		var $tambah = "<img src='"+$val+"' class=' item-desktop' ondblclick='$(this).fadeOut();$(this).hide();'>";
-		$('#desktop').html($desk+$tambah)
-		//alert($val);
+		var desk = $('.desktop-item').html();
+		var tambah = "<img src='"+$val+"' class=' item-desktop' ondblclick='$(this).fadeOut();$(this).hide();'>";
+		$('.desktop-item').html(desk+tambah)
+		
 	});
 	$('#thumb-search').click(function() {
 	var $menu = $('#search');
@@ -65,6 +94,12 @@ $(document).ready(function() {
 	var $menu = $('#music');
 	if ($menu.is(':visible')) {$menu.fadeOut();$menu.hide();}
 	else {$menu.fadeIn();}
+	});
+	$('#thumb-setting').click(function(){
+		alert("buka pengaturan ponsel");
+	});
+	$('#thumb-refresh').click(function(){
+		alert("bersihkan \"recent history\"");
 	});
 	
 	$('#power').click(function() {
